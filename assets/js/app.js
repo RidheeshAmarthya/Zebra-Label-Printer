@@ -81,8 +81,11 @@
 
     function getDefaultElements() {
         return [
-            { id: Date.now(), type: 'text', content: 'PRODUCT LABEL', x: 30, y: 30, size: 40, bold: true, underline: false, isVariable: false, prefix: '', prefixBold: false, prefixUnderline: false },
-            { id: Date.now() + 1, type: 'barcode', content: '12345678', x: 500, y: 30, height: 70, ratio: 2, isVariable: true, prefix: 'Barcode: ' }
+            { id: 1, type: 'box', x: 20, y: 20, w: 770, h: 370, t: 3 },
+            { id: 2, type: 'text', x: 50, y: 80, content: "PRODUCT RECEIPT", size: 40, bold: true, underline: false, isVariable: false, prefix: "", prefixBold: false },
+            { id: 3, type: 'text', x: 50, y: 160, prefix: "ITEM: ", content: "Wireless Keyboard", size: 28, bold: false, underline: false, prefixBold: true, isVariable: true },
+            { id: 4, type: 'text', x: 50, y: 220, prefix: "SKU: ", content: "WK-9000-B", size: 28, bold: false, underline: false, prefixBold: true, isVariable: true },
+            { id: 5, type: 'barcode', x: 50, y: 260, content: "WK-9000-B", height: 70, ratio: 2 }
         ];
     }
 
