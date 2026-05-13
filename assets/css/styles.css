@@ -140,9 +140,11 @@ body {
 
 .content-header {
     display: flex;
-    justify-content-between;
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
 }
 
 .content-header h1 {
@@ -165,6 +167,183 @@ body {
     box-shadow: var(--shadow);
     padding: 1.5rem;
 }
+
+.mb-3 { margin-bottom: 1rem; }
+.mt-3 { margin-top: 1rem; }
+
+/* Designer Toolbar */
+.designer-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #ffffff;
+}
+
+.toolbar-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Element Cards */
+.element-card {
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.element-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.element-header {
+    background-color: #f8fafc;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.element-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.element-title i {
+    width: 16px;
+    height: 16px;
+    color: var(--primary);
+}
+
+.element-body {
+    padding: 1.25rem;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-icon:hover {
+    background-color: #fee2e2;
+}
+
+.template-box {
+    background-color: #f1f5f9;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    margin-top: 0.5rem;
+}
+
+.template-header {
+    font-size: 0.6rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.text-error { color: var(--error); }
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+    text-align: center;
+    border: 2px dashed var(--border);
+    background: none;
+    box-shadow: none;
+}
+
+.empty-state i {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.col-span-2 {
+    grid-column: span 2;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.gap-2 { gap: 0.5rem; }
+
+.format-toolbar {
+    display: flex;
+    gap: 0.25rem;
+    background-color: #f1f5f9;
+    padding: 0.25rem;
+    border-radius: 8px;
+    width: fit-content;
+    border: 1px solid var(--border);
+}
+
+.btn-format {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    width: 36px;
+    height: 36px;
+}
+
+.btn-format:hover {
+    background-color: #e2e8f0;
+    color: var(--primary);
+}
+
+.btn-format.active {
+    background-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.btn-format i {
+    width: 18px;
+    height: 18px;
+}
+
+
 
 .form-section {
     margin-bottom: 2rem;
@@ -203,7 +382,7 @@ body {
     color: var(--text-main);
 }
 
-input, textarea {
+input, textarea, select {
     padding: 0.75rem 1rem;
     border-radius: 8px;
     border: 1px solid var(--border);
@@ -211,9 +390,10 @@ input, textarea {
     font-size: 0.875rem;
     transition: all 0.2s ease;
     background-color: #fcfcfc;
+    width: 100%;
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
@@ -271,12 +451,22 @@ input:focus, textarea:focus {
     color: var(--text-main);
 }
 
+.simple-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.text-muted { color: var(--text-muted); }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 2rem; }
+
 .preview-canvas-wrapper {
-    min-height: 250px;
+    min-height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 2.5rem;
     background-image: 
         linear-gradient(45deg, #f0f0f0 25%, transparent 25%), 
         linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), 
@@ -284,9 +474,59 @@ input:focus, textarea:focus {
         linear-gradient(-45deg, transparent 75%, #f0f0f0 75%);
     background-size: 20px 20px;
     background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    position: relative;
+    overflow: hidden;
 }
 
-#label-preview-img {
+.drag-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.drag-handle {
+    position: absolute;
+    border: 1px dashed var(--primary);
+    background-color: rgba(37, 99, 235, 0.05);
+    cursor: move;
+    pointer-events: auto;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drag-handle:hover {
+    background-color: rgba(37, 99, 235, 0.15);
+    border-style: solid;
+    border-width: 2px;
+}
+
+.drag-handle.dragging {
+    background-color: rgba(37, 99, 235, 0.25);
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
+    z-index: 100;
+}
+
+.drag-handle::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.drag-handle:hover::after {
+    opacity: 1;
+}
+
+.label-preview-img {
     max-width: 100%;
     height: auto;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);

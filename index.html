@@ -26,13 +26,13 @@
                     <i data-lucide="layout"></i>
                     <span>Label Designer</span>
                 </a>
-                <a href="#setup" class="nav-item" onclick="showTab('setup')">
-                    <i data-lucide="settings"></i>
-                    <span>Setup Guide</span>
-                </a>
                 <a href="#advanced" class="nav-item" onclick="showTab('advanced')">
                     <i data-lucide="code"></i>
                     <span>ZPL Editor</span>
+                </a>
+                <a href="#setup" class="nav-item" onclick="showTab('setup')">
+                    <i data-lucide="settings"></i>
+                    <span>Setup Guide</span>
                 </a>
             </nav>
             
@@ -58,64 +58,22 @@
                     <h1>Label Designer</h1>
                     <div class="header-actions">
                         <button class="btn-outline" onclick="clearFields()">
-                            <i data-lucide="trash-2"></i> Clear
+                            <i data-lucide="trash-2"></i> Clear Content
                         </button>
                     </div>
                 </header>
 
                 <div class="grid-layout">
-                    <!-- Left: Form -->
-                    <div class="form-container card">
-                        <form id="label-form">
-                            <div class="form-section">
-                                <h3>Label Content</h3>
-                                <div class="form-grid">
-                                    <div class="form-group">
-                                        <label>Header Title</label>
-                                        <input type="text" name="header" placeholder="e.g. PRODUCT LABEL" value="PRODUCT LABEL">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Reference No</label>
-                                        <input type="text" name="ref_no" placeholder="REF-12345">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Description</label>
-                                        <input type="text" name="description" placeholder="Item Description">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Barcode Value</label>
-                                        <input type="text" name="barcode" placeholder="BAR-123-ABC">
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Left: Simple Data Entry -->
+                    <div class="designer-main">
+                        <div class="card mb-3">
+                            <div class="toolbar-label">LABEL DATA ENTRY</div>
+                            <p class="text-muted" style="font-size: 0.75rem; margin-top: 0.25rem;">Fill in the content below. Coordinates and layout can be managed in the Advanced tab.</p>
+                        </div>
 
-                            <div class="form-section">
-                                <h3>Specifications</h3>
-                                <div class="form-grid">
-                                    <div class="form-group">
-                                        <label>Attribute 1</label>
-                                        <input type="text" name="attr1" placeholder="e.g. Size">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Value 1</label>
-                                        <input type="text" name="val1" placeholder="e.g. XL">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Attribute 2</label>
-                                        <input type="text" name="attr2" placeholder="e.g. Color">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Value 2</label>
-                                        <input type="text" name="val2" placeholder="e.g. Navy">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-section">
-                                <h3>Notes</h3>
-                                <textarea name="notes" rows="3" placeholder="Additional remarks..."></textarea>
-                            </div>
-                        </form>
+                        <div id="simple-elements-container" class="simple-form">
+                            <!-- Simplified inputs will be injected here -->
+                        </div>
                     </div>
 
                     <!-- Right: Preview -->
@@ -128,12 +86,12 @@
                                     <button onclick="zoomPreview(0.1)"><i data-lucide="zoom-in"></i></button>
                                 </div>
                             </div>
-                            <div class="preview-canvas-wrapper" id="preview-wrapper">
-                                <div id="preview-placeholder" class="preview-placeholder">
+                            <div class="preview-canvas-wrapper">
+                                <div class="preview-placeholder">
                                     <i data-lucide="loader-2" class="spin"></i>
                                     <p>Generating Preview...</p>
                                 </div>
-                                <img id="label-preview-img" style="display: none;">
+                                <img class="label-preview-img" style="display: none;">
                             </div>
                         </div>
 
@@ -156,23 +114,21 @@
                     <div class="guide-step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h3>Install Zebra Drivers</h3>
-                            <p>Ensure your printer is connected via USB and recognized by Windows/macOS. Download the official Zebra Setup Utilities if needed.</p>
-                            <a href="https://www.zebra.com/us/en/support-downloads/software/utilities/zebra-setup-utilities.html" target="_blank" class="btn-link">Official Download <i data-lucide="external-link"></i></a>
+                            <h3>Download Zebra Browser Print</h3>
+                            <p>This application acts as a bridge between this website and your printer hardware. Select your operating system below:</p>
+                            <div class="flex-row gap-2 mt-3">
+                                <a href="assets/drivers/zebra-browser-print-windows.zip" download class="btn-primary flex-1">
+                                    <i data-lucide="download"></i> Windows
+                                </a>
+                                <a href="assets/drivers/zebra-browser-print-mac.zip" download class="btn-primary flex-1">
+                                    <i data-lucide="download"></i> macOS
+                                </a>
+                            </div>
                         </div>
                     </div>
 
                     <div class="guide-step">
                         <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Download Zebra Browser Print</h3>
-                            <p>This application acts as a bridge between this website and your printer hardware.</p>
-                            <a href="https://www.zebra.com/us/en/support-downloads/software/developer-tools/browser-print.html" target="_blank" class="btn-link">Download Browser Print <i data-lucide="external-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="guide-step">
-                        <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Configure USB Printer</h3>
                             <p>Open Browser Print, right-click the tray icon (Windows) or menu bar icon (mac), and select <strong>Settings</strong>. Ensure your printer is selected in the "Default Device" dropdown.</p>
@@ -180,7 +136,7 @@
                     </div>
 
                     <div class="guide-step">
-                        <div class="step-number">4</div>
+                        <div class="step-number">3</div>
                         <div class="step-content">
                             <h3>Grant Permission</h3>
                             <p>When you click "Print" for the first time, Browser Print will ask for permission to allow this site to access your printer. Click <strong>Allow</strong>.</p>
@@ -194,13 +150,90 @@
                 <header class="content-header">
                     <h1>ZPL Source Editor</h1>
                 </header>
-                <div class="card p-0">
-                    <textarea id="zpl-source" class="zpl-editor" spellcheck="false"></textarea>
-                </div>
-                <div class="mt-3">
-                    <button class="btn-secondary" onclick="updatePreviewFromZpl()">
-                        <i data-lucide="play"></i> Render Manual ZPL
-                    </button>
+                
+                <div class="grid-layout">
+                    <!-- Left: Layout Architect -->
+                    <div class="designer-main">
+                        <div class="designer-toolbar card mb-3">
+                            <div class="toolbar-label">LAYOUT ARCHITECT</div>
+                            <div class="toolbar-actions">
+                                <button class="btn-secondary btn-sm" onclick="addElement('text')">
+                                    <i data-lucide="type"></i> Add Text
+                                </button>
+                                <button class="btn-secondary btn-sm" onclick="addElement('barcode')">
+                                    <i data-lucide="barcode"></i> Add Barcode
+                                </button>
+                                <button class="btn-secondary btn-sm" onclick="addElement('box')">
+                                    <i data-lucide="square"></i> Add Box
+                                </button>
+                                <button class="btn-secondary btn-sm" onclick="document.getElementById('image-upload').click()">
+                                    <i data-lucide="image"></i> Add Image
+                                </button>
+                                <input type="file" id="image-upload" style="display: none;" accept="image/*" onchange="handleImageUpload(this)">
+                            </div>
+                        </div>
+
+                        <div id="elements-container" class="elements-list">
+                            <!-- Dynamic layout cards will be injected here -->
+                        </div>
+
+                        <div class="card mb-3 mt-4">
+                            <div class="toolbar-label mb-2">LABEL DIMENSIONS (INCHES)</div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Width (in)</label>
+                                    <input type="number" id="cfg-width" step="0.1" value="4" oninput="updateLabelSettings()">
+                                </div>
+                                <div class="form-group">
+                                    <label>Height (in)</label>
+                                    <input type="number" id="cfg-height" step="0.1" value="2" oninput="updateLabelSettings()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="toolbar-label mb-2">RAW ZPL SOURCE</div>
+                            <div class="card p-0">
+                                <textarea id="zpl-source" class="zpl-editor" spellcheck="false" placeholder="Enter ZPL code here..." style="height: 200px;"></textarea>
+                            </div>
+                            <div class="flex-between mt-2">
+                                <button class="btn-secondary btn-sm" onclick="updatePreviewFromZpl()">
+                                    <i data-lucide="play"></i> Sync from ZPL
+                                </button>
+                                <div class="flex-row gap-2">
+                                    <button class="btn-outline btn-sm" onclick="downloadBackup()" title="Download design as JSON">
+                                        <i data-lucide="download"></i> Export
+                                    </button>
+                                    <button class="btn-outline btn-sm" onclick="document.getElementById('backup-upload').click()" title="Load design from JSON">
+                                        <i data-lucide="upload"></i> Import
+                                    </button>
+                                    <input type="file" id="backup-upload" style="display: none;" accept=".json" onchange="handleBackupUpload(this)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Preview (Shared) -->
+                    <div class="preview-container">
+                        <div class="preview-card card">
+                            <div class="preview-header">
+                                <span class="badge">LAYOUT PREVIEW</span>
+                                <div class="preview-zoom">
+                                    <button onclick="zoomPreview(-0.1)"><i data-lucide="zoom-out"></i></button>
+                                    <button onclick="zoomPreview(0.1)"><i data-lucide="zoom-in"></i></button>
+                                </div>
+                            </div>
+                            <div class="preview-canvas-wrapper">
+                                <div id="drag-overlay-advanced" class="drag-overlay"></div>
+                                <div class="preview-placeholder">
+                                    <i data-lucide="loader-2" class="spin"></i>
+                                    <p>Rendering...</p>
+                                </div>
+                                <img class="label-preview-img" style="display: none;">
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </section>
         </main>
@@ -223,6 +256,20 @@
             document.getElementById(tabId + '-tab').classList.add('active');
             const navItem = document.querySelector(`[onclick="showTab('${tabId}')"]`);
             if (navItem) navItem.classList.add('active');
+
+            // Refresh UI components on tab switch
+            if (tabId === 'designer') {
+                renderSimpleDesigner();
+            }
+            if (tabId === 'advanced') {
+                renderElements();
+                // Ensure handles appear immediately after tab becomes visible
+                setTimeout(() => {
+                    if (typeof renderDragOverlay === 'function') {
+                        renderDragOverlay('drag-overlay-advanced');
+                    }
+                }, 100);
+            }
         }
     </script>
 </body>
