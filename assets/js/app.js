@@ -789,6 +789,26 @@
         }
     }
 
+    // --- Initialization & Event Listeners ---
+    let zoomFrame;
+    document.addEventListener('mousemove', (e) => {
+        if (zoomFrame) cancelAnimationFrame(zoomFrame);
+        
+        zoomFrame = requestAnimationFrame(() => {
+            const zoomContainers = document.querySelectorAll('.preview-canvas-wrapper.enable-zoom');
+            zoomContainers.forEach(container => {
+                const rect = container.getBoundingClientRect();
+                if (e.clientX >= rect.left && e.clientX <= rect.right && 
+                    e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                    
+                    const x = ((e.clientX - rect.left) / rect.width) * 100;
+                    const y = ((e.clientY - rect.top) / rect.height) * 100;
+                    container.style.transformOrigin = `${x}% ${y}%`;
+                }
+            });
+        });
+    });
+
     window.refreshConnection = () => {
         PrinterManager.checkConnection(true);
     };

@@ -23,8 +23,8 @@
             
             <nav class="side-nav">
                 <a href="#designer" class="nav-item active" onclick="showTab('designer')">
-                    <i data-lucide="layout"></i>
-                    <span>Label Designer</span>
+                    <i data-lucide="printer"></i>
+                    <span>Print Center</span>
                 </a>
                 <a href="#advanced" class="nav-item" onclick="showTab('advanced')">
                     <i data-lucide="code"></i>
@@ -55,7 +55,7 @@
             <!-- Designer Tab -->
             <section id="designer-tab" class="tab-content active">
                 <header class="content-header">
-                    <h1>Label Designer</h1>
+                    <h1>Label Print Center</h1>
                     <div class="header-actions">
                         <button class="btn-outline" onclick="clearFields()">
                             <i data-lucide="trash-2"></i> Clear Content
@@ -68,7 +68,12 @@
                     <div class="designer-main">
                         <div class="card mb-3">
                             <div class="toolbar-label">LABEL DATA ENTRY</div>
-                            <p class="text-muted" style="font-size: 0.75rem; margin-top: 0.25rem;">Fill in the content below. Coordinates and layout can be managed in the Advanced tab.</p>
+                            <p class="text-muted" style="font-size: 0.75rem; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                <span>Fill in the content below to generate your label.</span>
+                                <a href="javascript:void(0)" class="link-primary" style="font-weight: 600; text-decoration: underline;" onclick="showTab('advanced')">
+                                    Edit Layout in ZPL Editor
+                                </a>
+                            </p>
                         </div>
 
                         <div id="simple-elements-container" class="simple-form">
@@ -81,12 +86,8 @@
                         <div class="preview-card card">
                             <div class="preview-header">
                                 <span class="badge">LIVE PREVIEW</span>
-                                <div class="preview-zoom">
-                                    <button onclick="zoomPreview(-0.1)"><i data-lucide="zoom-out"></i></button>
-                                    <button onclick="zoomPreview(0.1)"><i data-lucide="zoom-in"></i></button>
-                                </div>
                             </div>
-                            <div class="preview-canvas-wrapper">
+                            <div class="preview-canvas-wrapper enable-zoom">
                                 <div class="preview-placeholder">
                                     <i data-lucide="loader-2" class="spin"></i>
                                     <p>Generating Preview...</p>
@@ -218,10 +219,6 @@
                         <div class="preview-card card">
                             <div class="preview-header">
                                 <span class="badge">LAYOUT PREVIEW</span>
-                                <div class="preview-zoom">
-                                    <button onclick="zoomPreview(-0.1)"><i data-lucide="zoom-out"></i></button>
-                                    <button onclick="zoomPreview(0.1)"><i data-lucide="zoom-in"></i></button>
-                                </div>
                             </div>
                             <div class="preview-canvas-wrapper">
                                 <div id="drag-overlay-advanced" class="drag-overlay"></div>
